@@ -1,20 +1,24 @@
 <?php 
     class BaseSearch {
-        
+
         private $db;
-        function __construct(){
+        private string $postType;
+
+        public function __construct($type)
+        {
+            $this->postType = $type;
             $dsn =  'mysql:dbname=wordpress;host=localhost;';
             try {
                 $this->db = new PDO($dsn, "root", "");
-                echo "OK";
             } catch (PDOException $result_e) {
                 die($result_e);
             }
+            
         }
 
         public function  createData()
         {
-            $sql = "SELECT * from wp_posts WHERE post_type = 'product' LIMIT 8";
+            $sql = "SELECT * from wp_posts WHERE post_type = '$this->postType' LIMIT 8";
             $stmt = $this->db->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -33,6 +37,11 @@
         }
     }
 
-    $dbConn = new BaseSearch();
-    $product = $dbConn->createData();
-    var_dump($product);
+    $dbConn = new BaseSearch('post');
+    $post = $dbConn->createData();
+    var_dump($post);
+    echo "----------------------------------------------";
+    $dbConnn = new BaseSearch('product');
+    $pro = $dbConnn->createData();
+    var_dump($pro);
+    
