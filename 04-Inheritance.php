@@ -1,12 +1,18 @@
 <?php 
     class BaseSearch {
         private $db;
+        private $dbConfig = [
+            'hostname' => 'localhost',
+            'username' => 'root',
+            'password' => '',
+            'dbname' => 'wordpress'
+        ];
         public function __construct(){
 
-            $conn =  "mysql:dbname='livemap_business';host='localhost'";
+            $dsn =  "mysql:dbname=wordpress;host=localhost;";
             try {
-                $connect = new PDO($conn , "root", "");
-                echo "OK!";
+                $this->db = new PDO($dsn, "root", "");
+                echo "OK";
             } catch (PDOException $result_e) {
                 die($result_e);
             }
