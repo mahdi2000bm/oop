@@ -21,15 +21,13 @@
             $sql = "SELECT * from wp_posts WHERE post_type = '$this->postType' LIMIT 8";
             $stmt = $this->db->prepare($sql);
             $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $stmt->fetchAll(PDO::FETCH_OBJ); 
         }
         private function readData()
         {
-
         }
         private function UpdateData()
         {
-
         }
         private function deleteData()
         {
@@ -40,7 +38,9 @@
     $dbConn = new BaseSearch('post');
     $post = $dbConn->createData();
     var_dump($post);
+
     echo "----------------------------------------------";
+    
     $dbConnn = new BaseSearch('product');
     $pro = $dbConnn->createData();
     var_dump($pro);
