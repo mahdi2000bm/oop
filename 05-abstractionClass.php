@@ -2,16 +2,26 @@
     abstract class baseCar
     {   
         protected string $car;
-        public function __cunstract($name)
+        public function __construct($name)
         {
-            $this->$car = $name;
+            $this->car = $name;
         }
-        abstract protected function carOption();
+        abstract public function carOption();
     }
+
     class Bmw extends baseCar
     {
-        protected function carOption(){
-            return "this car in $this->name";
+        public function carOption(){
+            return "this car in $this->car";
         }
     }
-    $BMW = new Bmw("BMW");
+    $BMW = new Bmw("s");
+    $BMW->carOption();
+
+    class BENZ extends Bmw
+    {
+
+    }
+
+    $BMW = new BENZ("BENZ");
+    echo $BMW->carOption();
