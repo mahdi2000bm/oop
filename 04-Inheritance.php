@@ -23,16 +23,6 @@
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ); 
         }
-        private function readData()
-        {
-        }
-        private functidon UpdateData()
-        {
-        }
-        private function deleteData()
-        {
-
-        }
     }
 
     $dbConn = new BaseSearch('post');
