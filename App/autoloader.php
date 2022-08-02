@@ -1,7 +1,7 @@
 
 <?php
-    function autoLoader($nameClass)
+    function autoLoader($class)
     {
-        return $nameClass;
+        return $class;
     }
-    spl_autoload_register($autoLoader);
+    spl_autoload_register('autoLoader');
